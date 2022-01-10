@@ -18,7 +18,7 @@ export default class MainView extends React.Component {
       .get("https://myflix-api-project.herokuapp.com/movies")
       .then((response) => {
         this.setState({
-          movies: response.data,
+          movies: response.data
         });
       })
       .catch((error) => {
@@ -36,28 +36,27 @@ export default class MainView extends React.Component {
     const { movies, selectedMovie } = this.state;
 
     if (movies.length === 0)
-      return <div className="main-view">The list is empty!</div>;
+      return <div className="main-view" />;
 
     return (
       <div className="main-view">
-        {selectedMovie ? (
+        {selectedMovie ?
           <MovieView
             movie={selectedMovie}
             onBackClick={(newSelectedMovie) => {
               this.setSelectedMovie(newSelectedMovie);
             }}
           />
-        ) : (
-          movies.map((movie) => (
+         : movies.map((movie => (
             <MovieCard
               key={movie._id}
               movie={movie}
-              onMovieClick={(movie) => {
-                this.setSelectedMovie(movie);
+              onMovieClick={(newSelectedMovie) => {
+                this.setSelectedMovie(newSelectedMovie)
               }}
             />
           ))
-        )}
+        }
       </div>
     );
   }
