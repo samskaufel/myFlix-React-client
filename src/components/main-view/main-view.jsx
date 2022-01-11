@@ -13,29 +13,34 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null
-    };
+    }:
   }
 
   componentDidMount() {
-    axios
-      .get("https://myflix-api-project.herokuapp.com/movies")
-      .then((response) => {
+    axios.get("https://myflix-api-project.herokuapp.com/movies")
+      .then(response => {
         this.setState({
           movies: response.data
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
 
-  setSelectedMovie(movie) {
+  setSelectedMovie(newSelectedMovie) {
     this.setState({
-      selectedMovie: movie
+      selectedMovie: newSelectedMovie
     });
   }
   
   onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }
+  
+  onRegister(user) {
     this.setState({
       user
     });
