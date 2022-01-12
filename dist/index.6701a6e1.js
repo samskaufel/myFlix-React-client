@@ -22977,15 +22977,23 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         },
         {
             key: "setSelectedMovie",
-            value: function setSelectedMovie(movie) {
+            value: function setSelectedMovie(newSelectedMovie) {
                 this.setState({
-                    selectedMovie: movie
+                    selectedMovie: newSelectedMovie
                 });
             }
         },
         {
             key: "onLoggedIn",
             value: function onLoggedIn(user) {
+                this.setState({
+                    user: user
+                });
+            }
+        },
+        {
+            key: "onRegister",
+            value: function onRegister(user) {
                 this.setState({
                     user: user
                 });
@@ -23002,7 +23010,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 99
+                        lineNumber: 106
                     },
                     __self: this
                 }));
@@ -23010,7 +23018,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                     className: "main-view",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 102
+                        lineNumber: 109
                     },
                     __self: this
                 }));
@@ -23018,14 +23026,14 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 103
+                        lineNumber: 110
                     },
                     __self: this,
                     children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(Col, {
                         md: 8,
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 104
+                            lineNumber: 111
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -23035,7 +23043,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 105
+                                lineNumber: 112
                             },
                             __self: this
                         })
@@ -23044,7 +23052,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                             md: 3,
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 109
+                                lineNumber: 116
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -23054,7 +23062,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 110
+                                    lineNumber: 117
                                 },
                                 __self: this
                             }, movie._id)
