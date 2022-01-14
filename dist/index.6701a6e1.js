@@ -22944,30 +22944,49 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         _classCallCheck(this, MainView2);
         _this = _super.call(this);
         _this.state = {
-            movies: [],
+            movies: [
+                {
+                    _id: 1,
+                    Title: 'Inception',
+                    Description: 'desc1...',
+                    ImagePath: '...'
+                },
+                {
+                    _id: 2,
+                    Title: 'The Shawshank Redemption',
+                    Description: 'desc2...',
+                    ImagePath: '...'
+                },
+                {
+                    _id: 3,
+                    Title: 'Gladiator',
+                    Description: 'desc3...',
+                    ImagePath: '...'
+                }
+            ],
             selectedMovie: null
         };
         return _this;
     }
     _createClass(MainView2, [
         {
+            key: "setSelectedMovie",
+            value: function setSelectedMovie(newSelectedMovie) {
+                this.setState({
+                    selectedMovie: newSelectedMovie
+                });
+            }
+        },
+        {
             key: "render",
             value: function render() {
                 var _this2 = this;
                 var _this$state = this.state, movies = _this$state.movies, selectedMovie = _this$state.selectedMovie;
-                if (selectedMovie) return(/*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                    movie: selectedMovie,
-                    __source: {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 64
-                    },
-                    __self: this
-                }));
                 if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
                     className: "main-view",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 65
+                        lineNumber: 86
                     },
                     __self: this,
                     children: "The list is empty!"
@@ -22976,20 +22995,28 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                     className: "main-view",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 66
+                        lineNumber: 87
                     },
                     __self: this,
-                    children: movies.map(function(movie) {
+                    children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                        movie: selectedMovie,
+                        onBackClick: function(newSelectedMovie) {
+                            _this2.setSelectedMovie(newSelectedMovie);
+                        },
+                        __source: {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 88
+                        },
+                        __self: this
+                    }) : movies.map(function(movie) {
                         return(/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                             movie: movie,
-                            onMovieClick: function(newSelectedMovie) {
-                                _this2.setState({
-                                    selectedMovie: newSelectedMovie
-                                });
+                            onMovieClick: function(movie1) {
+                                _this2.setSelectedMovie(movie1);
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 68
+                                lineNumber: 91
                             },
                             __self: this
                         }, movie._id));
@@ -23384,12 +23411,12 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
         {
             key: "render",
             value: function render() {
-                var movie = this.props.movie;
+                var _this$props = this.props, movie = _this$props.movie, onBackClick = _this$props.onBackClick;
                 return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     className: "movie-view",
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 49
+                        lineNumber: 51
                     },
                     __self: this,
                     children: [
@@ -23397,14 +23424,14 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                             className: "movie-poster",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 50
+                                lineNumber: 52
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
                                 src: movie.ImagePath,
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 51
+                                    lineNumber: 53
                                 },
                                 __self: this
                             })
@@ -23413,7 +23440,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                             className: "movie-title",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 53
+                                lineNumber: 55
                             },
                             __self: this,
                             children: [
@@ -23421,7 +23448,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                                     className: "label",
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 54
+                                        lineNumber: 56
                                     },
                                     __self: this,
                                     children: "Title: "
@@ -23430,7 +23457,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                                     className: "value",
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 55
+                                        lineNumber: 57
                                     },
                                     __self: this,
                                     children: movie.Title
@@ -23441,7 +23468,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                             className: "movie-description",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 57
+                                lineNumber: 59
                             },
                             __self: this,
                             children: [
@@ -23449,7 +23476,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                                     className: "label",
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 58
+                                        lineNumber: 60
                                     },
                                     __self: this,
                                     children: "Description: "
@@ -23458,12 +23485,23 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                                     className: "value",
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 59
+                                        lineNumber: 61
                                     },
                                     __self: this,
                                     children: movie.Description
                                 })
                             ]
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                            onClick: function() {
+                                onBackClick(null);
+                            },
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 63
+                            },
+                            __self: this,
+                            children: "Back"
                         })
                     ]
                 }));
