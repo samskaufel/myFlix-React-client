@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 
+import './movie-view.scss';
+
 export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
