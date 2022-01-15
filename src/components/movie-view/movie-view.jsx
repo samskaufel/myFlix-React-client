@@ -65,7 +65,7 @@ MovieView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-      Born: PropTypes.date.isRequired,
+      Born: PropTypes.date,
       Died: PropTypes.date
     }),
     Featured: PropTypes.bool,
