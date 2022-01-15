@@ -1,55 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React from "react";
+import PropTypes from "prop-types";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
 
     return (
-      <Container fluid className='movieContainer'>
-        <Row>
-          <Col>
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movie.ImagePath} crossOrigin='true'/>
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-        </div>
-        <div className="director-bio">
-          <span className="director">Bio: </span>
-          <span className="value">{movie.Director.Bio}</span>
-        </div>
-        <div className="director-born">
-          <span className="director">Born: </span>
-          <span className="value">{movie.Director.Born}</span>
-        </div>
-        <div className="director-died">
-          <span className="director">Died: </span>
-          <span className="value">{movie.Director.Died}</span>
-        </div>
-        <button onClick={() => { onBackClick(null); }}>Back</button>
+      <Card style={{ width: "36rem" }}>
+        <Card.Img variant="top" src={movie.ImagePath} crossOrigin="true" />
+        <Card.Body>
+          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Text>Description: {movie.Description}</Card.Text>
+        </Card.Body>
 
-      </div>
-      </Col>
-        </Row>
-      </Container>
+        <ListGroup key={movie._id} className="list-group-flush">
+          <ListGroupItem>Genre: {movie.Genre.Name}</ListGroupItem>
+          <ListGroupItem>
+            Director: {movie.Director.Name} <br />
+            Bio: {movie.Director.Bio} <br />
+            Born: {movie.Director.Born} <br />
+            Died: {movie.Director.Died}
+          </ListGroupItem>
+        </ListGroup>
+        <Card.Body>
+          <Button
+            variant="link"
+            onClick={() => {
+              onBackClick(null);
+            }}
+          >
+            Back
+          </Button>
+        </Card.Body>
+      </Card>
     );
   }
 }
@@ -60,16 +47,16 @@ MovieView.propTypes = {
     Description: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
+      Description: PropTypes.string.isRequired,
     }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
       Born: PropTypes.date,
-      Died: PropTypes.date
+      Died: PropTypes.date,
     }),
     Featured: PropTypes.bool,
-    ImagePath: PropTypes.string.isRequired
-    }).isRequired,
-    onBackClick: PropTypes.func.isRequired
+    ImagePath: PropTypes.string.isRequired,
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
 };
