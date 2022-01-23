@@ -22967,14 +22967,13 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         {
             key: "componentDidMount",
             value: function componentDidMount() {
-                var _this2 = this;
-                _axios["default"].get('https://myflix-api-project.herokuapp.com/movies').then(function(response) {
-                    _this2.setState({
-                        movies: response.data
+                var accessToken = localStorage.getItem('token');
+                if (accessToken !== null) {
+                    this.setState({
+                        user: localStorage.getItem('user')
                     });
-                })["catch"](function(error) {
-                    console.log(error);
-                });
+                    this.getMovies(accessToken);
+                }
             }
         },
         {
@@ -22987,9 +22986,41 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         },
         {
             key: "onLoggedIn",
-            value: function onLoggedIn(user) {
+            value: function onLoggedIn(authData) {
+                console.log(authData);
                 this.setState({
-                    user: user
+                    user: authData.user.Username
+                });
+                localStorage.setItem('token', authData.token);
+                localStorage.setItem('user', authData.user.Username);
+                this.getMovies(authData.token);
+            }
+        },
+        {
+            key: "getMovies",
+            value: function getMovies(token) {
+                var _this2 = this;
+                _axios["default"].get('https://myflix-api-project.herokuapp.com/movies', {
+                    headers: {
+                        Authorization: "Bearer ".concat(token)
+                    }
+                }).then(function(response) {
+                    // Assign the result to the state
+                    _this2.setState({
+                        movies: response.data
+                    });
+                })["catch"](function(error) {
+                    console.log(error);
+                });
+            }
+        },
+        {
+            key: "onLoggedOut",
+            value: function onLoggedOut() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                this.setState({
+                    user: null
                 });
             }
         },
@@ -23004,7 +23035,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 103
+                        lineNumber: 133
                     },
                     __self: this
                 }));
@@ -23012,75 +23043,88 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                     className: "main-view",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 106
+                        lineNumber: 136
                     },
                     __self: this,
                     children: "Loading..."
                 }));
-                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     className: "main-view",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 107
+                        lineNumber: 137
                     },
                     __self: this,
-                    children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_Row.default, {
-                        className: "justify-content-md-center",
-                        __source: {
-                            fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 108
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
-                            md: 8,
+                    children: [
+                        selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_Row.default, {
+                            className: "justify-content-md-center",
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 109
+                                lineNumber: 138
                             },
                             __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                                movie: selectedMovie,
-                                onBackClick: function(newSelectedMovie) {
-                                    _this3.setSelectedMovie(newSelectedMovie);
-                                },
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
+                                md: 8,
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 110
-                                },
-                                __self: this
-                            })
-                        })
-                    }) : /*#__PURE__*/ _jsxRuntime.jsx(_Row.default, {
-                        className: "justify-content-md-center",
-                        __source: {
-                            fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 114
-                        },
-                        __self: this,
-                        children: movies.map(function(movie) {
-                            return(/*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
-                                lg: 3,
-                                md: 4,
-                                sm: 6,
-                                __source: {
-                                    fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 116
+                                    lineNumber: 139
                                 },
                                 __self: this,
-                                children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
-                                    movie: movie,
-                                    onMovieClick: function(movie1) {
-                                        _this3.setSelectedMovie(movie1);
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                                    movie: selectedMovie,
+                                    onBackClick: function(newSelectedMovie) {
+                                        _this3.setSelectedMovie(newSelectedMovie);
                                     },
                                     __source: {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 117
+                                        lineNumber: 140
                                     },
                                     __self: this
-                                }, movie._id)
-                            }));
+                                })
+                            })
+                        }) : /*#__PURE__*/ _jsxRuntime.jsx(_Row.default, {
+                            className: "justify-content-md-center",
+                            __source: {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 144
+                            },
+                            __self: this,
+                            children: movies.map(function(movie) {
+                                return(/*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
+                                    lg: 3,
+                                    md: 4,
+                                    sm: 6,
+                                    __source: {
+                                        fileName: "src/components/main-view/main-view.jsx",
+                                        lineNumber: 146
+                                    },
+                                    __self: this,
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                                        movie: movie,
+                                        onMovieClick: function(movie1) {
+                                            _this3.setSelectedMovie(movie1);
+                                        },
+                                        __source: {
+                                            fileName: "src/components/main-view/main-view.jsx",
+                                            lineNumber: 147
+                                        },
+                                        __self: this
+                                    }, movie._id)
+                                }));
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                            onClick: function() {
+                                _this3.onLoggedOut();
+                            },
+                            __source: {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 153
+                            },
+                            __self: this,
+                            children: "Logout"
                         })
-                    })
+                    ]
                 }));
             }
         }
@@ -24898,6 +24942,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.LoginView = LoginView;
 var _react = _interopRequireWildcard(require("react"));
+var _axios = _interopRequireDefault(require("axios"));
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -24988,15 +25033,22 @@ function LoginView(props) {
     var _useState3 = _react.useState(""), _useState4 = _slicedToArray(_useState3, 2), password = _useState4[0], setPassword = _useState4[1];
     var handleSubmit = function handleSubmit1(e) {
         e.preventDefault();
-        console.log(username, password);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
+        /* Send a request to the server for authentication */ _axios["default"].post('https://myflix-api-project.herokuapp.com/login', {
+            Username: username,
+            Password: password
+        }).then(function(response) {
+            var data = response.data;
+            props.onLoggedIn(data);
+        })["catch"](function(e1) {
+            console.log('no such user');
+        });
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_Container.default, {
         fluid: true,
         className: "login-view",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 65
+            lineNumber: 72
         },
         __self: this,
         children: [
@@ -25005,13 +25057,13 @@ function LoginView(props) {
                 variant: "light",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 66
+                    lineNumber: 73
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_Container.default, {
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 67
+                        lineNumber: 74
                     },
                     __self: this,
                     children: [
@@ -25019,7 +25071,7 @@ function LoginView(props) {
                             href: "#home",
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 68
+                                lineNumber: 75
                             },
                             __self: this,
                             children: "myFlix"
@@ -25028,14 +25080,14 @@ function LoginView(props) {
                             className: "me-auto",
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 69
+                                lineNumber: 76
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_Nav.default.Link, {
                                 href: "",
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 70
+                                    lineNumber: 77
                                 },
                                 __self: this,
                                 children: "Register"
@@ -25047,44 +25099,13 @@ function LoginView(props) {
             /*#__PURE__*/ _jsxRuntime.jsxs(_Form.default, {
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 74
+                    lineNumber: 81
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs(_Form.default.Group, {
                         className: "mb-3",
                         controlId: "formUsername",
-                        __source: {
-                            fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 75
-                        },
-                        __self: this,
-                        children: [
-                            /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Label, {
-                                __source: {
-                                    fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 76
-                                },
-                                __self: this,
-                                children: "Username:"
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Control, {
-                                type: "text",
-                                placeholder: "Username",
-                                onChange: function(e) {
-                                    return setUsername(e.target.value);
-                                },
-                                __source: {
-                                    fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 77
-                                },
-                                __self: this
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsxs(_Form.default.Group, {
-                        className: "mb-3",
-                        controlId: "formPassword",
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
                             lineNumber: 82
@@ -25097,6 +25118,37 @@ function LoginView(props) {
                                     lineNumber: 83
                                 },
                                 __self: this,
+                                children: "Username:"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Control, {
+                                type: "text",
+                                placeholder: "Username",
+                                onChange: function(e) {
+                                    return setUsername(e.target.value);
+                                },
+                                __source: {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 84
+                                },
+                                __self: this
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_Form.default.Group, {
+                        className: "mb-3",
+                        controlId: "formPassword",
+                        __source: {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 89
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Label, {
+                                __source: {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 90
+                                },
+                                __self: this,
                                 children: "Password:"
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Control, {
@@ -25107,7 +25159,7 @@ function LoginView(props) {
                                 },
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 84
+                                    lineNumber: 91
                                 },
                                 __self: this
                             })
@@ -25119,7 +25171,7 @@ function LoginView(props) {
                         onClick: handleSubmit,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 88
+                            lineNumber: 95
                         },
                         __self: this,
                         children: "Login"
@@ -25141,7 +25193,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Form":"5ykgY","react-bootstrap/Button":"9CzHT","prop-types":"1tgq3","react-bootstrap/Container":"2PRIq","react-bootstrap/Navbar":"eYZQl","react-bootstrap/Nav":"io07g","./login-view.scss":"lS4BK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"5ykgY":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Form":"5ykgY","react-bootstrap/Button":"9CzHT","prop-types":"1tgq3","react-bootstrap/Container":"2PRIq","react-bootstrap/Navbar":"eYZQl","react-bootstrap/Nav":"io07g","./login-view.scss":"lS4BK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4","axios":"iYoWk"}],"5ykgY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
