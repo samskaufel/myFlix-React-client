@@ -14,6 +14,7 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
+      // selectedMovie: null,
       user: null
     };
   }
@@ -68,14 +69,8 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
-    if (!user) 
-    return 
-    <Row>
-      <Col>
-        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-      </Col>
-    </Row> 
+    const { movies, selectedMovie, user } = this.state;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
     
     if (movies.length === 0) return <div className="main-view">Loading...</div>;
 
