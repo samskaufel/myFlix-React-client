@@ -9,6 +9,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "./main-view.scss";
 import { Container } from "react-bootstrap";
+import {NavigationBar} from '../navbar/navbar';
 
 export class MainView extends React.Component {
   constructor() {
@@ -72,18 +73,18 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
 
-    if (!user)
-      return (
-        <Row>
-          <Col>
-            <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-          </Col>
-        </Row>
-      );
+    // if (!user)
+    //   return (
+    //     <Row>
+    //       <Col>
+    //         <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+    //       </Col>
+    //     </Row>
+    //   );
 
     return (
       <Router>
-        
+        <NavigationBar user={user} />
         <Container>
         <Row className="main-view justify-content-md-center">
           <Route
