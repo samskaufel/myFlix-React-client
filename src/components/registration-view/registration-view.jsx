@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./registration-view.scss";
+
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -79,10 +83,10 @@ export function RegistrationView(props) {
     <Row className="mt-5">
       <Col md={12}>
         <Form>
-          <h3>Sign Up</h3>
+          <h3>New User Registration</h3>
           <p></p>
           <Form.Group controlId="formUsername" className="reg-form-inputs">
-            <Form.Label>Username:</Form.Label>
+            <Form.Label>Create Username:</Form.Label>
             <Form.Control
               type="text"
               value={username}
@@ -90,8 +94,9 @@ export function RegistrationView(props) {
             />
             {usernameErr && <p>{usernameErr}</p>}
           </Form.Group>
+          <p></p>
           <Form.Group controlId="formPassword" className="reg-form-inputs">
-            <Form.Label>Password:</Form.Label>
+            <Form.Label>Create Password:</Form.Label>
             <Form.Control
               type="password"
               value={password}
@@ -99,8 +104,9 @@ export function RegistrationView(props) {
             />
             {passwordErr && <p>{passwordErr}</p>}
           </Form.Group>
+          <p></p>
           <Form.Group controlId="Email" className="reg-form-inputs">
-            <Form.Label>Email:</Form.Label>
+            <Form.Label>Enter Valid Email:</Form.Label>
             <Form.Control
               type="email"
               value={email}
@@ -108,6 +114,7 @@ export function RegistrationView(props) {
             />
             {emailErr && <p>{emailErr}</p>}
           </Form.Group>
+          <p></p>
           <Form.Group controlId="updateBirthday">
             <Form.Label>Birthday:</Form.Label>
             <Form.Control
@@ -117,9 +124,9 @@ export function RegistrationView(props) {
             />
             {birthdayErr && <p>{birthdayErr}</p>}
           </Form.Group>
-
+          <p></p>
           <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Register
+            Sign Up
           </Button>
           <p></p>
           <p>
@@ -138,4 +145,5 @@ RegistrationView.propTypes = {
     Email: PropTypes.string.isRequired,
     Birthday: PropTypes.string.isRequired,
   }),
+  onRegistration: PropTypes.func,
 };

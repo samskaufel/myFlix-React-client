@@ -33,7 +33,7 @@ export function NavigationBar({ user }) {
                             <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
                         )}
                         {isAuth() && (
-                            <Button onClick={() => {
+                            <Button variant="outline-primary" onClick={() => {
                                 onLoggedOut()
                             }}>Logout</Button>
                         )}
