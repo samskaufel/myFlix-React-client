@@ -8,6 +8,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "./main-view.scss";
+import { Container } from "react-bootstrap";
 
 export class MainView extends React.Component {
   constructor() {
@@ -82,6 +83,8 @@ export class MainView extends React.Component {
 
     return (
       <Router>
+        
+        <Container>
         <Row className="main-view justify-content-md-center">
           <Route
             exact
@@ -106,7 +109,7 @@ export class MainView extends React.Component {
             render={() => {
               if (user) return <Redirect to="/" />
               return (
-                <Col>
+                <Col lg={8} md={8}>
                   <RegistrationView />
                 </Col>
               );
@@ -175,7 +178,24 @@ export class MainView extends React.Component {
               );
             }}
           />
+          <Route path={`/users/${user}`} 
+          render={({history}) => {
+            if(!user) return <Redirect to='/' />
+            return <Col>
+            <ProfileView user={user}
+            onBackClick={() => history.goBack()}/>
+            </Col>
+          }} />
+          <Route path={`/user-update/${user}`}
+          render={({history}) => {
+            if(!user) return <Redirect to="/" />
+            return <Col>
+            <UserUpdate user={user}
+            onBackClick={() => history.goBack()}/>
+            </Col>
+          }} />
         </Row>
+        </Container>
       </Router>
     );
   }
