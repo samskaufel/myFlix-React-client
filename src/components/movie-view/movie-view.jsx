@@ -13,7 +13,7 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <Card style={{ width: "36rem" }}>
+      <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={movie.ImagePath} crossOrigin="true" />
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
@@ -21,12 +21,19 @@ export class MovieView extends React.Component {
         </Card.Body>
 
         <ListGroup key={movie._id} className="list-group-flush">
-          <ListGroupItem>Genre: {movie.Genre.Name}</ListGroupItem>
           <ListGroupItem>
-            Director: {movie.Director.Name} <br />
-            Bio: {movie.Director.Bio} <br />
-            Born: {new Date(movie.Director.Born).toLocaleDateString()} <br />
-            Died: {new Date(movie.Director.Died).toLocaleDateString()}
+            Genre: 
+            <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">{movie.Genre.Name}</Button>
+          </Link>
+            </ListGroupItem>
+
+          <ListGroupItem>
+            Director:
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">{movie.Director.Name}</Button>
+          </Link>
+
           </ListGroupItem>
         </ListGroup>
         <Card.Body>
@@ -38,13 +45,6 @@ export class MovieView extends React.Component {
           >
             Back
           </Button>
-          <Link to={`/directors/${movie.Director.Name}`}>
-            <Button variant="link">Director</Button>
-          </Link>
-
-          <Link to={`/genres/${movie.Genre.Name}`}>
-            <Button variant="link">Genre</Button>
-          </Link>
         </Card.Body>
       </Card>
     );
@@ -61,9 +61,6 @@ MovieView.propTypes = {
     }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Born: PropTypes.string,
-      Died: PropTypes.string,
     }),
     Featured: PropTypes.bool,
     ImagePath: PropTypes.string.isRequired,
