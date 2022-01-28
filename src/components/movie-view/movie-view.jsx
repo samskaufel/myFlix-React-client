@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
+import { Link } from "react-router-dom";
 
-import './movie-view.scss';
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
   render() {
@@ -24,8 +25,8 @@ export class MovieView extends React.Component {
           <ListGroupItem>
             Director: {movie.Director.Name} <br />
             Bio: {movie.Director.Bio} <br />
-            Born: {movie.Director.Born} <br />
-            Died: {movie.Director.Died}
+            Born: {new Date(movie.Director.Born).toLocaleDateString()} <br />
+            Died: {new Date(movie.Director.Died).toLocaleDateString()}
           </ListGroupItem>
         </ListGroup>
         <Card.Body>
@@ -37,6 +38,13 @@ export class MovieView extends React.Component {
           >
             Back
           </Button>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="link">Director</Button>
+          </Link>
+
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">Genre</Button>
+          </Link>
         </Card.Body>
       </Card>
     );
@@ -54,8 +62,8 @@ MovieView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-      Born: PropTypes.date,
-      Died: PropTypes.date,
+      Born: PropTypes.string,
+      Died: PropTypes.string,
     }),
     Featured: PropTypes.bool,
     ImagePath: PropTypes.string.isRequired,
