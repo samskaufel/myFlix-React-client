@@ -29819,8 +29819,7 @@ MovieView1.propTypes = {
         Title: _propTypes["default"].string.isRequired,
         Description: _propTypes["default"].string.isRequired,
         Genre: _propTypes["default"].shape({
-            Name: _propTypes["default"].string.isRequired,
-            Description: _propTypes["default"].string.isRequired
+            Name: _propTypes["default"].string.isRequired
         }),
         Director: _propTypes["default"].shape({
             Name: _propTypes["default"].string.isRequired
@@ -42117,7 +42116,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GenreView = GenreView;
 var _react = _interopRequireDefault(require("react"));
-var _reactRouterDom = require("react-router-dom");
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 var _ListGroup = _interopRequireDefault(require("react-bootstrap/ListGroup"));
@@ -42136,7 +42134,7 @@ function GenreView(props) {
         },
         __source: {
             fileName: "src/components/genre-view/genre-view.jsx",
-            lineNumber: 26
+            lineNumber: 24
         },
         __self: this,
         children: [
@@ -42144,7 +42142,7 @@ function GenreView(props) {
                 className: "genre-view",
                 __source: {
                     fileName: "src/components/genre-view/genre-view.jsx",
-                    lineNumber: 29
+                    lineNumber: 27
                 },
                 __self: this,
                 children: genre.Name
@@ -42153,20 +42151,20 @@ function GenreView(props) {
                 variant: "flush",
                 __source: {
                     fileName: "src/components/genre-view/genre-view.jsx",
-                    lineNumber: 30
+                    lineNumber: 28
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_ListGroupItem.default, {
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 31
+                        lineNumber: 29
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                         className: "genre-description",
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 32
+                            lineNumber: 30
                         },
                         __self: this,
                         children: [
@@ -42174,7 +42172,7 @@ function GenreView(props) {
                                 className: "label",
                                 __source: {
                                     fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 33
+                                    lineNumber: 31
                                 },
                                 __self: this,
                                 children: "Description: "
@@ -42183,7 +42181,7 @@ function GenreView(props) {
                                 className: "value",
                                 __source: {
                                     fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 34
+                                    lineNumber: 32
                                 },
                                 __self: this,
                                 children: genre.Description
@@ -42195,7 +42193,7 @@ function GenreView(props) {
             /*#__PURE__*/ _jsxRuntime.jsx(_Card.default.Body, {
                 __source: {
                     fileName: "src/components/genre-view/genre-view.jsx",
-                    lineNumber: 38
+                    lineNumber: 36
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_Button.default, {
@@ -42205,7 +42203,7 @@ function GenreView(props) {
                     },
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 39
+                        lineNumber: 37
                     },
                     __self: this,
                     children: "Back"
@@ -42223,6 +42221,6 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4","react-router-dom":"cpyQW","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-bootstrap/ListGroup":"e5zgD","react-bootstrap/ListGroupItem":"gx9ma"}],"jUTZ8":[function() {},{}]},["gwavk","hflwN","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-bootstrap/ListGroup":"e5zgD","react-bootstrap/ListGroupItem":"gx9ma"}],"jUTZ8":[function() {},{}]},["gwavk","hflwN","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
