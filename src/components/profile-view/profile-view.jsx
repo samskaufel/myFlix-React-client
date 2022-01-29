@@ -1,10 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
-import  ListGroupItem from 'react-bootstrap/ListGroupItem';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import { Link } from 'react-router-dom';
+import { MovieCard } from '../movie-card/movie-card';
 
 
 export class ProfileView extends React.Component {
@@ -166,7 +172,7 @@ export class ProfileView extends React.Component {
     }
 
     render() {
-      const { movies } = this.props;
+      
       const { FavoriteMovies, Username, Email, Birthday } = this.state;
 
         return (
@@ -179,27 +185,12 @@ export class ProfileView extends React.Component {
                   <div className="text-center">No Favorite Movie</div>
                 )}
                 <Row className="favorite-container">
-                  {FavoriteMovies.length > 0 &&
-                    movies.map((movie) => {
-                      if (
-                        movie._id ===
-                        FavoriteMovies.find((fav) => fav === movie._id)
-                      ) {
+                  {FavoriteMovies.map((movie) => {
+                    if (FavoriteMovies.length === 0) return <p>Favorites list is empty</p>;
                         return (
-                          <Card
-                            className="favorite-movie card-content"
-                            key={movie._id}
-                          >
-                            <Card.Img
-                              className="fav-poster"
-                              variant="top"
-                              crossOrigin="true"
-                              src={movie.ImagePath}
-                            />
-                            <Card.Body>
-                              <Card.Title className="movie_title">
-                                {movie.Title}
-                              </Card.Title>
+                          <Col xs={12} sm={6} lg={4} value={movie._id}>
+                          <Card className="mt-3 mb-3 ml-auto mr-auto card justify-content-center">
+                          <Card.Img variant="top" src={movie.ImagePath} crossOrigin="true" />
                               <Button
                                 size="sm"
                                 variant="danger"
@@ -208,10 +199,11 @@ export class ProfileView extends React.Component {
                               >
                                 Remove
                               </Button>
-                            </Card.Body>
                           </Card>
+                          </Col>
+
                         );
-                      }
+                      
                     })}
                 </Row>
               </Card.Body>
