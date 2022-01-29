@@ -10,22 +10,26 @@ import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {
-
   addFavoriteMovie() {
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
 
-    axios.post(`https://myflix-api-project.herokuapp.com/users/${user}/movies/${this.props.movie._id}`, {}, {
-        headers: { Authorization: `Bearer ${token}` },
-        method: 'POST',
-    })
-        .then((response) => {
-            alert(`Added to Favorites List`)
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-  };
+    axios
+      .post(
+        `https://myflix-api-project.herokuapp.com/users/${user}/movies/${this.props.movie._id}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          method: "POST",
+        }
+      )
+      .then((response) => {
+        alert(`Added to Favorites List`);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   render() {
     const { movie, onBackClick } = this.props;
@@ -62,7 +66,14 @@ export class MovieView extends React.Component {
           >
             Back
           </Button>
-          <Button variant="outline-primary" className="btn-outline-primary" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}>Favorite</Button>
+          <Button
+            variant="outline-primary"
+            className="btn-outline-primary"
+            value={movie._id}
+            onClick={(e) => this.addFavoriteMovie(e, movie)}
+          >
+            Favorite
+          </Button>
         </Card.Body>
       </Card>
     );
