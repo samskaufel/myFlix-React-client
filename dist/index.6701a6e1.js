@@ -29790,7 +29790,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                         /*#__PURE__*/ _jsxRuntime.jsx(_Card.default.Body, {
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 90
+                                lineNumber: 89
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_Button.default, {
@@ -29800,7 +29800,7 @@ var MovieView1 = /*#__PURE__*/ function(_React$Component) {
                                 },
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 91
+                                    lineNumber: 90
                                 },
                                 __self: this,
                                 children: "Back"
