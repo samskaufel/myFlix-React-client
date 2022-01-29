@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,23 @@ import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {
+
+  addFavoriteMovie() {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+
+    axios.post(`https://myflix-api-project.herokuapp.com/users/${user}/movies/${movie._id}`, {}, {
+        headers: { Authorization: `Bearer ${token}` },
+        
+    })
+        .then(response => {
+            alert(`Added to Favorites List`)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+  };
+
   render() {
     const { movie, onBackClick } = this.props;
 
@@ -44,6 +62,7 @@ export class MovieView extends React.Component {
           >
             Back
           </Button>
+          <Button variant="outline-primary" className="btn-outline-primary" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}>Favorite</Button>
         </Card.Body>
       </Card>
     );

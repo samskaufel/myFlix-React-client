@@ -1,12 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
+import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/ListGroup';
+import  ListGroupItem from 'react-bootstrap/ListGroupItem';
+import { Link } from 'react-router-dom';
 
 export class ProfileView extends React.Component {
     constructor() {
@@ -38,7 +36,7 @@ export class ProfileView extends React.Component {
     getUser = (token) => {
         const Username = localStorage.getItem('user');
         axios
-            .get('https://myflix-api-project.herokuapp.com/users/${user}', {
+            .get(`https://myflix-api-project.herokuapp.com/users/${Username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
@@ -57,17 +55,16 @@ export class ProfileView extends React.Component {
     // Allow user to edit or update profile
     editUser = (e) => {
         e.preventDefault();
-        const user = localStorage.getItem('user');
+        const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
         axios
             .put(
-                'https://myflix-api-project.herokuapp.com/users/${user}',
+                `https://myflix-api-project.herokuapp.com/users/${Username}`,
                 {
                     Username: this.state.Username,
                     Password: this.state.Password,
                     Email: this.state.Email,
-                    Birthday: this.state.Birthday,
                 },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -78,7 +75,6 @@ export class ProfileView extends React.Component {
                     Username: response.data.Username,
                     Password: response.data.Password,
                     Email: response.data.Email,
-                    Birthday: response.data.Birthday,
                 });
 
                 localStorage.setItem('user', this.state.Username);
@@ -96,12 +92,12 @@ export class ProfileView extends React.Component {
     // Delete a movie from FavoriteMovies list
     onRemoveFavorite = (e, movie) => {
         e.preventDefault();
-        const Username = localStorage.getItem('user');
+        const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
         axios
             .delete(
-                'https://myflix-api-project.herokuapp.com/users/${user}/movies/${movie._id}',
+                `https://myflix-api-project.herokuapp.com/users/${user}/movies/${movie._id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
@@ -118,23 +114,26 @@ export class ProfileView extends React.Component {
 
     // Deregister
     onDeleteUser() {
-        const user = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
+      const answer = window.confirm("Are you sure you want to delete your profile?");
+        if (answer) {
+          const user = localStorage.getItem('user');
+          const token = localStorage.getItem('token');
 
-        axios
-            .delete('https://myflix-api-project.herokuapp.com/user/${user}', {
-                headers: { Authorization: `Bearer ${token}` },
-            })
-            .then((response) => {
-                console.log(response);
-                alert("Profile deleted");
-                localStorage.removeItem('user');
-                localStorage.removeItem('token');
-                window.open('/', '_self');
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+          axios
+              .delete(`https://myflix-api-project.herokuapp.com/users/${user}`, {
+                  headers: { Authorization: `Bearer ${token}` },
+              })
+              .then((response) => {
+                  console.log(response);
+                  alert("Profile deleted");
+                  localStorage.removeItem('user');
+                  localStorage.removeItem('token');
+                  window.open('/', '_self');
+              })
+              .catch(function (error) {
+                  console.log(error);
+              });
+          }
     }
 
     setUsername(value) {
@@ -166,112 +165,18 @@ export class ProfileView extends React.Component {
     }
 
     render() {
-        const { movies, onBackClick } = this.props;
+        const { movies, } = this.props;
         const { FavoriteMovies, Username, Email, Birthday } = this.state;
 
         return (
             <Container className="profile-view">
-                <Row>
-                    <Col>
-                        <Card className="user-profile">
-                            <Card.Title>User Profile</Card.Title>
-                            <Card.Text>
-                                <div className="profile-container">
-                                    <span className="label">Username: </span>
-                                    <span className="value">{Username}</span>
-                                    <br />
-                                    <br />
-                                    <span className="label">Email: </span>
-                                    <span className="value">{Email}</span>
-                                    <br />
-                                    <br />
-                                    <span className="label">Birthday: </span>
-                                    <span className="value">{Birthday}</span>
-                                </div>
-                            </Card.Text>
-                        </Card>
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col>
-                        <Card className="update-profile">
-                            <Card.Body>
-                                <Card.Title>Update Profile</Card.Title>
-                                <Form
-                                    className="update-form"
-                                    onSubmit={(e) =>
-                                        this.editUser(
-                                            e,
-                                            this.Username,
-                                            this.Password,
-                                            this.Email,
-                                            this.Birthday
-                                        )
-                                    }
-                                >
-                                    <Form.Group>
-                                        <Form.Label>Username</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="Username"
-                                            placeholder="New Username"
-                                            onChange={(e) => this.setUsername(e.target.value)}
-                                            required
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control
-                                            type="password"
-                                            name="Password"
-                                            placeholder="New Password"
-                                            onChange={(e) => this.setPassword(e.target.value)}
-                                            required
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control
-                                            type="email"
-                                            name="Email"
-                                            placeholder="Enter Email"
-                                            onChange={(e) => this.setEmail(e.target.value)}
-                                            required
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>Birthday</Form.Label>
-                                        <Form.Control
-                                            type="date"
-                                            name="Birthday"
-                                            onChange={(e) => this.setBirthday(e.target.value)}
-                                        />
-                                    </Form.Group>
-                                    <br />
-                                    <div className="bt">
-                                        <Button variant="warning" type="submit" onClick={this.editUser}>Update User</Button>
-                                        <Button className="delete-button" variant="danger" onClick={() => this.onDeleteUser()} > Delete User </Button>
-                                    </div>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-                <Card>
-                    <Row style={{ marginTop: "20px" }}>
-                        <Col>
-                            <h4>{Username} Favorite Movies</h4>
-                        </Col>
-                    </Row>
+                  <Card>
                     <Row>
                         <Col>
                             <Card.Body>
+                              <Card.Title>Favorite Movies</Card.Title>
                                 {FavoriteMovies.length === 0 && (
-                                    <div className="text-center">No Favorite Movie</div>
+                                    <div className="text-center">Favorites list is empty</div>
                                 )}
                                 <Row className="favorite-container">
                                     {FavoriteMovies.length > 0 &&
@@ -287,11 +192,11 @@ export class ProfileView extends React.Component {
                                                             variant="top"
                                                             src={movie.ImagePath}
                                                         />
-                                                        <Card.Body style={{ backgroundColor: "black" }}>
+                                                        <Card.Body>
                                                             <Card.Title className="movie_title">
                                                                 {movie.Title}
                                                             </Card.Title>
-                                                            <Button size="sm" variant="danger" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)} > Remove </Button>
+                                                            <Button size="sm" variant="danger" onClick={() => onRemoveFavorite(movies._id)} > Remove from favorites </Button>
                                                         </Card.Body>
                                                     </Card>
                                                 );
@@ -303,9 +208,97 @@ export class ProfileView extends React.Component {
                     </Row>
                 </Card>
                 <br />
-                <div className="backButton">
-                    <Button variant="link" onClick={() => { onBackClick(null); }}>Back</Button>
-                </div>
+                <Row>
+                    <Col>
+                        <Card border="success" className="user-profile">
+                            <Card.Header>Current Profile</Card.Header>
+                            <ListGroup variant='flush'>
+                            <ListGroupItem>
+                                
+                                    <span className="label">Username: </span>
+                                    <span className="value">{Username}</span>
+                            </ListGroupItem>
+                            <ListGroupItem>
+                                    <span className="label">Email: </span>
+                                    <span className="value">{Email}</span>
+                                    </ListGroupItem>
+                                    <ListGroupItem>
+                                    <span className="label">Birthday: </span>
+                                    <span className="value">{new Date(Birthday).toLocaleDateString()}</span>
+                                    </ListGroupItem>
+                            
+                            </ListGroup>
+                        </Card>
+                    </Col>
+                </Row>
+                <br />
+                <Row>
+                    <Col>
+                        <Card border='warning' className="update-profile">
+                            <Card.Body>
+                                <Card.Title>Update Profile</Card.Title>
+                                <Form
+                                    className="update-form"
+                                    onSubmit={(e) =>
+                                        this.editUser(
+                                            e,
+                                            this.Username,
+                                            this.Password,
+                                            this.Email
+                                        )
+                                    }
+                                >
+                                    <Form.Group controlId="formUpdateUsername" className="reg-form-inputs">
+                                        <Form.Label>Change Username</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="Username"
+                                            placeholder="Enter New Username"
+                                            onChange={(e) => this.setUsername(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <p></p>
+                                    <Form.Group controlId='formUpdatePassword' className='reg-form-inputs'>
+                                        <Form.Label>Change Password</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            name="Password"
+                                            placeholder="Enter New Password"
+                                            onChange={(e) => this.setPassword(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <p></p>
+                                    <Form.Group controlId='formUpdateEmail' className='reg-form-input'>
+                                        <Form.Label>Change Email</Form.Label>
+                                        <Form.Control
+                                            type="email"
+                                            name="Email"
+                                            placeholder="Enter Valid Email"
+                                            onChange={(e) => this.setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
+                                    <p></p>
+                                    <div className="d-grid gap-2">
+                                      <Button variant="warning" size="lg" type="submit" onClick={this.editUser}>
+                                        Update User Info
+                                      </Button>
+                                      <Button variant="outline-danger" size="lg" onClick={this.onDeleteUser}>
+                                        Delete User Profile
+                                      </Button>
+                                    </div>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                
+                <br />
+                <Link to={'/'}>
+                    <Button variant="primary">Home</Button>
+                </Link>
                 <br />
             </Container>
         );
