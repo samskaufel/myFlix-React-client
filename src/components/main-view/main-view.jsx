@@ -68,7 +68,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, favorites } = this.state;
+    const { movies, user, FavoriteMovies } = this.state;
 
     return (
       <Router>
@@ -177,6 +177,7 @@ export class MainView extends React.Component {
                     <ProfileView
                       user={user}
                       movies={movies}
+                      favorites={FavoriteMovies}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>
