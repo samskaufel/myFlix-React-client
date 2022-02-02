@@ -1,15 +1,13 @@
 import React from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
 import { Link } from "react-router-dom";
+
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -320,6 +318,7 @@ export class ProfileView extends React.Component {
             </Card>
           </Container>
         </Row>
+        <Link to={`/`}>Home</Link>
       </Container>
     );
   }

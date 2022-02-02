@@ -24,7 +24,8 @@ export class MovieView extends React.Component {
         }
       )
       .then((response) => {
-        alert(`${movie.Title} was added to your favorites.`);
+        console.log(response);
+        alert(`This movie has been added to favorites.`);
       })
       .catch(function (error) {
         console.log(error);
