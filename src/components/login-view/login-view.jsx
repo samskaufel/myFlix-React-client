@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import PropTypes from "prop-types";
+import {Link} from 'react-router-dom';
 import "./login-view.scss";
 
 export function LoginView(props) {
@@ -86,6 +87,10 @@ export function LoginView(props) {
       <Button variant="primary" type="submit" onClick={handleSubmit}>
         Sign In
       </Button>
+      <p></p>
+          <p>
+            New user? <Link to={"/register"}>Register here</Link>
+          </p>
     </Form>
     </Col>
     </Row>
