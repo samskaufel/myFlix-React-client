@@ -11,10 +11,9 @@ import { GenreView } from "../genre-view/genre-view";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { connect } from 'react-redux';
-import { setMovies, setUser } from '../../actions/actions';
-import MoviesList from '../movies-list/movies-list';
-import "./main-view.scss";
+import { connect } from "react-redux";
+import { setMovies, setUser } from "../../actions/actions";
+import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
   constructor() {
@@ -70,7 +69,6 @@ class MainView extends React.Component {
     let { movies } = this.props;
     let { user } = this.state;
 
-
     return (
       <Router>
         <NavigationBar user={user} />
@@ -87,7 +85,7 @@ class MainView extends React.Component {
                     </Col>
                   );
                 if (movies.length === 0) return <div className="main-view" />;
-                return <MoviesList movies={movies} />
+                return <MoviesList movies={movies} />;
               }}
             />
             <Route
@@ -205,7 +203,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies, user: state.user }
-}
+  return { movies: state.movies, user: state.user };
+};
 
-export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);

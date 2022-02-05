@@ -10,15 +10,17 @@ export function GenreView(props) {
   return (
     <Card style={{ width: "36rem" }}>
       <Card.Header className="genre-view">{genre.Name}</Card.Header>
-      <ListGroup variant="flush">
-        <ListGroupItem>
-          <div className="genre-description">
-            <span className="label">Description: </span>
-            <span className="value">{genre.Description}</span>
-          </div>
-        </ListGroupItem>
-      </ListGroup>
       <Card.Body>
+        <ListGroup variant="flush">
+          <ListGroupItem>
+            <div className="genre-description">
+              <span className="label">Description: </span>
+              <span className="value">{genre.Description}</span>
+            </div>
+          </ListGroupItem>
+        </ListGroup>
+      </Card.Body>
+      <Card.Footer>
         <Button
           variant="link"
           onClick={() => {
@@ -27,7 +29,7 @@ export function GenreView(props) {
         >
           Back
         </Button>
-      </Card.Body>
+      </Card.Footer>
     </Card>
   );
 }

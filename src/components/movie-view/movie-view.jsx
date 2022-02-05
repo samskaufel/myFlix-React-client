@@ -7,8 +7,6 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import { Link } from "react-router-dom";
 
-import "./movie-view.scss";
-
 export class MovieView extends React.Component {
   addFavoriteMovie() {
     const token = localStorage.getItem("token");
