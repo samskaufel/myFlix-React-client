@@ -8,7 +8,6 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 
-
 export class ProfileView extends React.Component {
   constructor() {
     super();

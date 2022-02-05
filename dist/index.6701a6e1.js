@@ -23220,8 +23220,13 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                             return(/*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
                                                     user: user,
+                                                    setUser: function(user1) {
+                                                        return _this3.setUser(user1);
+                                                    },
                                                     movies: movies,
-                                                    favorites: FavoriteMovies,
+                                                    onLoggedOut: function() {
+                                                        return _this3.onLoggedOut();
+                                                    },
                                                     onBackClick: function() {
                                                         return history.goBack();
                                                     }
@@ -23253,7 +23258,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 220
+                                            lineNumber: 224
                                         },
                                         __self: this
                                     })
@@ -23269,11 +23274,13 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
 }(_react["default"].Component);
 var mapStateToProps = function mapStateToProps1(state) {
     return {
-        movies: state.movies
+        movies: state.movies,
+        user: state.user
     };
 };
 var _default = _reactRedux.connect(mapStateToProps, {
-    setMovies: _actions.setMovies
+    setMovies: _actions.setMovies,
+    setUser: _actions.setUser
 })(MainView1);
 exports["default"] = _default;
 
@@ -43448,13 +43455,19 @@ var _reactDom = require("react-dom");
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SET_MOVIES = exports.SET_FILTER = void 0;
+exports.UPDATE_USER = exports.SET_USER = exports.SET_MOVIES = exports.SET_FILTER = void 0;
 exports.setFilter = setFilter;
 exports.setMovies = setMovies;
+exports.setUser = setUser;
+exports.updateUser = updateUser;
 var SET_MOVIES = 'SET_MOVIES';
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = 'SET_FILTER';
 exports.SET_FILTER = SET_FILTER;
+var SET_USER = 'SET_USER';
+exports.SET_USER = SET_USER;
+var UPDATE_USER = 'UPDATE_USER';
+exports.UPDATE_USER = UPDATE_USER;
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -43464,6 +43477,18 @@ function setMovies(value) {
 function setFilter(value) {
     return {
         type: SET_FILTER,
+        value: value
+    };
+}
+function setUser(value) {
+    return {
+        type: SET_USER,
+        value: value
+    };
+}
+function updateUser(value) {
+    return {
+        type: UPDATE_USER,
         value: value
     };
 }
@@ -43564,7 +43589,56 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Col":"fbam0","react-redux":"2L0if","../movie-card/movie-card":"6EiBJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4","../visibility-filter-input/visibility-filter-input":"7ZxGS"}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Col":"fbam0","react-redux":"2L0if","../visibility-filter-input/visibility-filter-input":"7ZxGS","../movie-card/movie-card":"6EiBJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"7ZxGS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9bc3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9bc3.prelude(module);
+
+try {
+var _jsxRuntime = require("react/jsx-runtime");
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _reactRedux = require("react-redux");
+var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
+var _actions = require("../../actions/actions");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+function VisibilityFilterInput(props) {
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Control, {
+        onChange: function(e) {
+            return props.setFilter(e.target.value);
+        },
+        value: props.visibilityFilter,
+        placeholder: "filter",
+        __source: {
+            fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
+            lineNumber: 19
+        },
+        __self: this
+    }));
+}
+_c = VisibilityFilterInput;
+var _default = _reactRedux.connect(null, {
+    setFilter: _actions.setFilter
+})(VisibilityFilterInput);
+exports["default"] = _default;
+var _c;
+$RefreshReg$(_c, "VisibilityFilterInput");
+
+  $parcel$ReactRefreshHelpers$9bc3.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"1Ttfj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43764,56 +43838,7 @@ MovieCard1.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-router-dom":"cpyQW","./movie-card.scss":"cF5gT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"cF5gT":[function() {},{}],"7ZxGS":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9bc3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9bc3.prelude(module);
-
-try {
-var _jsxRuntime = require("react/jsx-runtime");
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _reactRedux = require("react-redux");
-var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
-var _actions = require("../../actions/actions");
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        "default": obj
-    };
-}
-function VisibilityFilterInput(props) {
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Control, {
-        onChange: function(e) {
-            return props.setFilter(e.target.value);
-        },
-        value: props.visibilityFilter,
-        placeholder: "filter",
-        __source: {
-            fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
-            lineNumber: 19
-        },
-        __self: this
-    }));
-}
-_c = VisibilityFilterInput;
-var _default = _reactRedux.connect(null, {
-    setFilter: _actions.setFilter
-})(VisibilityFilterInput);
-exports["default"] = _default;
-var _c;
-$RefreshReg$(_c, "VisibilityFilterInput");
-
-  $parcel$ReactRefreshHelpers$9bc3.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"1Ttfj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"jyMAr":[function() {},{}],"4d0QS":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-router-dom":"cpyQW","./movie-card.scss":"cF5gT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"cF5gT":[function() {},{}],"jyMAr":[function() {},{}],"4d0QS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "__DO_NOT_USE__ActionTypes", ()=>ActionTypes
@@ -44387,9 +44412,22 @@ function movies() {
             return state;
     }
 }
+function user() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments.length > 1 ? arguments[1] : undefined;
+    switch(action.type){
+        case _actions.SET_USER:
+            return action.value;
+        case _actions.UPDATE_USER:
+            return action.value;
+        default:
+            return state;
+    }
+}
 var moviesApp = _redux.combineReducers({
     visibilityFilter: visibilityFilter,
-    movies: movies
+    movies: movies,
+    user: user
 });
 var _default = moviesApp;
 exports["default"] = _default;

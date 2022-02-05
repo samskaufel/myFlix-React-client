@@ -12,7 +12,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { connect } from 'react-redux';
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import "./main-view.scss";
 
@@ -173,8 +173,9 @@ class MainView extends React.Component {
                   <Col>
                     <ProfileView
                       user={user}
+                      setUser={(user) => this.setUser(user)}
                       movies={movies}
-                      favorites={FavoriteMovies}
+                      onLoggedOut={() => this.onLoggedOut()}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>
@@ -203,8 +204,8 @@ class MainView extends React.Component {
   }
 }
 
-let mapStateToProps = state => {
-  return { movies: state.movies }
+let mapStateToProps = (state) => {
+  return { movies: state.movies, user: state.user }
 }
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
