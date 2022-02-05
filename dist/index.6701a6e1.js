@@ -31057,7 +31057,6 @@ var _Nav = _interopRequireDefault(require("react-bootstrap/Nav"));
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 var _Navbar = _interopRequireDefault(require("react-bootstrap/Navbar"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
-var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
         "default": obj
@@ -31082,14 +31081,14 @@ function NavigationBar(_ref) {
         variant: "light",
         __source: {
             fileName: "src/components/navbar/navbar.jsx",
-            lineNumber: 42
+            lineNumber: 40
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_Container.default, {
             fluid: true,
             __source: {
                 fileName: "src/components/navbar/navbar.jsx",
-                lineNumber: 43
+                lineNumber: 41
             },
             __self: this,
             children: [
@@ -31098,7 +31097,7 @@ function NavigationBar(_ref) {
                     href: "/",
                     __source: {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 44
+                        lineNumber: 42
                     },
                     __self: this,
                     children: "myFlix"
@@ -31107,7 +31106,7 @@ function NavigationBar(_ref) {
                     "aria-controls": "responsive-navbar-nav",
                     __source: {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 47
+                        lineNumber: 45
                     },
                     __self: this
                 }),
@@ -31115,14 +31114,14 @@ function NavigationBar(_ref) {
                     id: "responsive-navbar-nav",
                     __source: {
                         fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 48
+                        lineNumber: 46
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_Nav.default, {
                         className: "ml-auto",
                         __source: {
                             fileName: "src/components/navbar/navbar.jsx",
-                            lineNumber: 49
+                            lineNumber: 47
                         },
                         __self: this,
                         children: [
@@ -31130,7 +31129,7 @@ function NavigationBar(_ref) {
                                 href: "/users/".concat(user),
                                 __source: {
                                     fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 50
+                                    lineNumber: 48
                                 },
                                 __self: this,
                                 children: user
@@ -31142,7 +31141,7 @@ function NavigationBar(_ref) {
                                 },
                                 __source: {
                                     fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 51
+                                    lineNumber: 49
                                 },
                                 __self: this,
                                 children: "Logout"
@@ -31151,7 +31150,7 @@ function NavigationBar(_ref) {
                                 href: "/",
                                 __source: {
                                     fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 56
+                                    lineNumber: 54
                                 },
                                 __self: this,
                                 children: "Login"
@@ -31160,7 +31159,7 @@ function NavigationBar(_ref) {
                                 href: "/register",
                                 __source: {
                                     fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 57
+                                    lineNumber: 55
                                 },
                                 __self: this,
                                 children: "Register"
@@ -31181,7 +31180,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Nav":"io07g","react-bootstrap/Container":"2PRIq","react-bootstrap/Navbar":"eYZQl","react-bootstrap/Button":"9CzHT","react-router-dom":"cpyQW","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"io07g":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Nav":"io07g","react-bootstrap/Container":"2PRIq","react-bootstrap/Navbar":"eYZQl","react-bootstrap/Button":"9CzHT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iDFo4"}],"io07g":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
