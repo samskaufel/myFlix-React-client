@@ -43,3 +43,8 @@ Profile View
 <li>Displays favorite movies</li>
 <li>Allows users to remove a movie from their list of favorites</li>
 </ul>
+
+## How to Run
+```
+npm run start
+```
