@@ -1,16 +1,13 @@
-# myFlix-Client
+# myFlix: React
 
-# Objective
-Using React, build the client-side for an application called myFlix based on
+## Description
+Using React, I built the client-side for an application called "myFlix" based on
 its existing server-side code (REST API and database).
 
-# User Stories
-<ul>
-  <li>As a user, I want to be able to access information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in</li>
-  <li>As a user, I want to be able to create a profile so I can save data about my favorite movies</li>
-</ul>
+## Objective
+This project allowed me to practice full-stack web development by creating a SPA for the server-side code.
 
-# Features
+## Features
 Main View
 <ul>
 <li>Returns a list of ALL movies to the user (each listed item with an image, title, and description)</li>
@@ -43,6 +40,12 @@ Profile View
 <li>Displays favorite movies</li>
 <li>Allows users to remove a movie from their list of favorites</li>
 </ul>
+
+## Built Using
+- MERN
+- Parcel
+- React-Redux
+- Styled with Bootstrap
 
 ## How to Run
 ```
