@@ -22973,45 +22973,42 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
     _inherits(MainView2, _React$Component);
     var _super = _createSuper(MainView2);
     function MainView2() {
+        var _this;
         _classCallCheck(this, MainView2);
-        return _super.apply(this, arguments);
+        _this = _super.call(this);
+        _this.state = {
+            user: null
+        };
+        return _this;
     }
     _createClass(MainView2, [
         {
             key: "componentDidMount",
             value: function componentDidMount() {
                 var accessToken = localStorage.getItem("token");
-                if (accessToken !== null) this.getMovies(accessToken);
+                if (accessToken !== null) {
+                    this.setState({
+                        user: localStorage.getItem("user")
+                    });
+                    this.getMovies(accessToken);
+                }
             }
         },
         {
             key: "onLoggedIn",
             value: function onLoggedIn(authData) {
                 console.log(authData);
-                this.props.setUser(authData.user);
+                this.setState({
+                    user: authData.user.Username
+                });
                 localStorage.setItem("token", authData.token);
+                localStorage.setItem("user", authData.user.Username);
                 this.getMovies(authData.token);
             }
         },
         {
             key: "getMovies",
             value: function getMovies(token) {
-                var _this = this;
-                _axios["default"].get("https://myflix-api-project.herokuapp.com/movies", {
-                    headers: {
-                        Authorization: "Bearer ".concat(token)
-                    }
-                }).then(function(response) {
-                    // Assign the result to the state
-                    _this.props.setMovies(response.data);
-                })["catch"](function(error) {
-                    console.log(error);
-                });
-            }
-        },
-        {
-            key: "getUser",
-            value: function getUser(token) {
                 var _this2 = this;
                 _axios["default"].get("https://myflix-api-project.herokuapp.com/movies", {
                     headers: {
@@ -23029,19 +23026,22 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
             key: "onLoggedOut",
             value: function onLoggedOut() {
                 localStorage.removeItem("token");
-                this.props.setUser(null);
-                this.props.setMovies(null);
+                localStorage.removeItem("user");
+                this.setState({
+                    user: null
+                });
             }
         },
         {
             key: "render",
             value: function render() {
                 var _this3 = this;
-                var _this$props = this.props, movies = _this$props.movies, user = _this$props.user;
+                var movies = this.props.movies;
+                var user = this.state.user;
                 return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 139
+                        lineNumber: 136
                     },
                     __self: this,
                     children: [
@@ -23049,21 +23049,21 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                             user: user,
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 140
+                                lineNumber: 137
                             },
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_Container.default, {
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 141
+                                lineNumber: 138
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsxs(_Row.default, {
                                 className: "main-view justify-content-md-center",
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 142
+                                    lineNumber: 139
                                 },
                                 __self: this,
                                 children: [
@@ -23087,7 +23087,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 143
+                                            lineNumber: 140
                                         },
                                         __self: this
                                     }),
@@ -23106,7 +23106,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 152
+                                            lineNumber: 149
                                         },
                                         __self: this
                                     }),
@@ -23139,7 +23139,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 158
+                                            lineNumber: 155
                                         },
                                         __self: this
                                     }),
@@ -23172,7 +23172,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 176
+                                            lineNumber: 173
                                         },
                                         __self: this
                                     }),
@@ -23205,7 +23205,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 194
+                                            lineNumber: 191
                                         },
                                         __self: this
                                     }),
@@ -23234,7 +23234,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 212
+                                            lineNumber: 209
                                         },
                                         __self: this
                                     }),
@@ -23257,7 +23257,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 225
+                                            lineNumber: 222
                                         },
                                         __self: this
                                     })
