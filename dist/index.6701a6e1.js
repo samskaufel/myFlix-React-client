@@ -22973,13 +22973,12 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
     _inherits(MainView2, _React$Component);
     var _super = _createSuper(MainView2);
     function MainView2() {
+        // this.state = {
+        //   user: null,
+        // };
         var _this;
         _classCallCheck(this, MainView2);
-        _this = _super.call(this);
-        _this.state = {
-            user: null
-        };
-        return _this;
+        return _possibleConstructorReturn(_this);
     }
     _createClass(MainView2, [
         {
@@ -22997,12 +22996,11 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         {
             key: "onLoggedIn",
             value: function onLoggedIn(authData) {
-                console.log(authData);
-                this.setState({
-                    user: authData.user.Username
-                });
-                localStorage.setItem("token", authData.token);
-                localStorage.setItem("user", authData.user.Username);
+                console.log(authData); // this.setState({
+                //   user: authData.user.Username,
+                // });
+                this.props.setUser(authData.user);
+                localStorage.setItem("token", authData.token); // localStorage.setItem("user", authData.user.Username);
                 this.getMovies(authData.token);
             }
         },
@@ -23034,12 +23032,11 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
             key: "render",
             value: function render() {
                 var _this3 = this;
-                var movies = this.props.movies;
-                var user = this.state.user;
+                var _this$props = this.props, movies = _this$props.movies, user = _this$props.user; // let { user } = this.state;
                 return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 134
+                        lineNumber: 137
                     },
                     __self: this,
                     children: [
@@ -23047,21 +23044,21 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                             user: user,
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 135
+                                lineNumber: 138
                             },
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_Container.default, {
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 136
+                                lineNumber: 139
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsxs(_Row.default, {
                                 className: "main-view justify-content-md-center",
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 137
+                                    lineNumber: 140
                                 },
                                 __self: this,
                                 children: [
@@ -23084,7 +23081,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 138
+                                            lineNumber: 141
                                         },
                                         __self: this
                                     }),
@@ -23103,7 +23100,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 147
+                                            lineNumber: 150
                                         },
                                         __self: this
                                     }),
@@ -23136,7 +23133,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 153
+                                            lineNumber: 156
                                         },
                                         __self: this
                                     }),
@@ -23169,7 +23166,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 171
+                                            lineNumber: 174
                                         },
                                         __self: this
                                     }),
@@ -23202,7 +23199,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 189
+                                            lineNumber: 192
                                         },
                                         __self: this
                                     }),
@@ -23231,7 +23228,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 207
+                                            lineNumber: 210
                                         },
                                         __self: this
                                     }),
@@ -23254,7 +23251,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 220
+                                            lineNumber: 223
                                         },
                                         __self: this
                                     })
