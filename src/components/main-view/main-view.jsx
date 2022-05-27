@@ -59,10 +59,8 @@ class MainView extends React.Component {
 
   onLoggedOut() {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
+    this.props.setUser(null);
+    this.props.setMovies(null);
   }
 
   render() {
