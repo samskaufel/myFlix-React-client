@@ -85,7 +85,7 @@ class MainView extends React.Component {
                     </Col>
                   );
                 if (movies.length === 0) return <div className="main-view" />;
-                return <MoviesList movies={movies} />;
+                return <MoviesList />;
               }}
             />
             <Route

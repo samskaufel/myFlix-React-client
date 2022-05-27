@@ -23082,7 +23082,6 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                                 className: "main-view"
                                             }));
                                             return(/*#__PURE__*/ _jsxRuntime.jsx(_moviesList.default, {
-                                                movies: movies
                                             }));
                                         },
                                         __source: {
@@ -43464,19 +43463,16 @@ var _reactDom = require("react-dom");
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.UPDATE_USER = exports.SET_USER = exports.SET_MOVIES = exports.SET_FILTER = void 0;
+exports.SET_USER = exports.SET_MOVIES = exports.SET_FILTER = void 0;
 exports.setFilter = setFilter;
 exports.setMovies = setMovies;
 exports.setUser = setUser;
-exports.updateUser = updateUser;
 var SET_MOVIES = "SET_MOVIES";
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = "SET_FILTER";
 exports.SET_FILTER = SET_FILTER;
 var SET_USER = "SET_USER";
 exports.SET_USER = SET_USER;
-var UPDATE_USER = "UPDATE_USER";
-exports.UPDATE_USER = UPDATE_USER;
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -43492,12 +43488,6 @@ function setFilter(value) {
 function setUser(value) {
     return {
         type: SET_USER,
-        value: value
-    };
-}
-function updateUser(value) {
-    return {
-        type: UPDATE_USER,
         value: value
     };
 }
@@ -43526,9 +43516,10 @@ function _interopRequireDefault(obj) {
     };
 }
 var mapStateToProps = function mapStateToProps1(state) {
-    var visibilityFilter = state.visibilityFilter;
+    var visibilityFilter = state.visibilityFilter, movies = state.movies;
     return {
-        visibilityFilter: visibilityFilter
+        visibilityFilter: visibilityFilter,
+        movies: movies
     };
 };
 function MoviesList(props) {
@@ -43541,7 +43532,7 @@ function MoviesList(props) {
         className: "main-view",
         __source: {
             fileName: "src/components/movies-list/movies-list.jsx",
-            lineNumber: 38
+            lineNumber: 40
         },
         __self: this
     }));
@@ -43554,14 +43545,14 @@ function MoviesList(props) {
                 },
                 __source: {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 40
+                    lineNumber: 42
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_visibilityFilterInput.default, {
                     visibilityFilter: visibilityFilter,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 43
+                        lineNumber: 45
                     },
                     __self: this
                 })
@@ -43571,14 +43562,14 @@ function MoviesList(props) {
                     md: 3,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 46
+                        lineNumber: 48
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                         movie: m,
                         __source: {
                             fileName: "src/components/movies-list/movies-list.jsx",
-                            lineNumber: 47
+                            lineNumber: 49
                         },
                         __self: this
                     })
@@ -44426,8 +44417,6 @@ function user() {
     var action = arguments.length > 1 ? arguments[1] : undefined;
     switch(action.type){
         case _actions.SET_USER:
-            return action.value;
-        case _actions.UPDATE_USER:
             return action.value;
         default:
             return state;
