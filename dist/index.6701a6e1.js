@@ -22973,12 +22973,10 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
     _inherits(MainView2, _React$Component);
     var _super = _createSuper(MainView2);
     function MainView2() {
-        // this.state = {
-        //   user: null,
-        // };
-        var _this;
         _classCallCheck(this, MainView2);
-        return _possibleConstructorReturn(_this);
+        return _super.call(this); // this.state = {
+    //   user: null,
+    // };
     }
     _createClass(MainView2, [
         {
@@ -23007,14 +23005,14 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         {
             key: "getMovies",
             value: function getMovies(token) {
-                var _this2 = this;
+                var _this = this;
                 _axios["default"].get("https://myflix-api-project.herokuapp.com/movies", {
                     headers: {
                         Authorization: "Bearer ".concat(token)
                     }
                 }).then(function(response) {
                     // Assign the result to the state
-                    _this2.props.setMovies(response.data);
+                    _this.props.setMovies(response.data);
                 })["catch"](function(error) {
                     console.log(error);
                 });
@@ -23031,12 +23029,12 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
         {
             key: "render",
             value: function render() {
-                var _this3 = this;
+                var _this2 = this;
                 var _this$props = this.props, movies = _this$props.movies, user = _this$props.user; // let { user } = this.state;
                 return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 137
+                        lineNumber: 133
                     },
                     __self: this,
                     children: [
@@ -23044,21 +23042,21 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                             user: user,
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 138
+                                lineNumber: 134
                             },
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_Container.default, {
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 139
+                                lineNumber: 135
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsxs(_Row.default, {
                                 className: "main-view justify-content-md-center",
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 140
+                                    lineNumber: 136
                                 },
                                 __self: this,
                                 children: [
@@ -23069,7 +23067,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                             if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                                     onLoggedIn: function(user1) {
-                                                        return _this3.onLoggedIn(user1);
+                                                        return _this2.onLoggedIn(user1);
                                                     }
                                                 })
                                             }));
@@ -23081,7 +23079,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 141
+                                            lineNumber: 137
                                         },
                                         __self: this
                                     }),
@@ -23100,7 +23098,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 150
+                                            lineNumber: 146
                                         },
                                         __self: this
                                     }),
@@ -23112,7 +23110,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                                     onLoggedIn: function(user1) {
-                                                        return _this3.onLoggedIn(user1);
+                                                        return _this2.onLoggedIn(user1);
                                                     }
                                                 })
                                             });
@@ -23133,7 +23131,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 156
+                                            lineNumber: 152
                                         },
                                         __self: this
                                     }),
@@ -23145,7 +23143,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                                     onLoggedIn: function(user1) {
-                                                        return _this3.onLoggedIn(user1);
+                                                        return _this2.onLoggedIn(user1);
                                                     }
                                                 })
                                             });
@@ -23166,7 +23164,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 174
+                                            lineNumber: 170
                                         },
                                         __self: this
                                     }),
@@ -23178,7 +23176,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_Col.default, {
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                                     onLoggedIn: function(user1) {
-                                                        return _this3.onLoggedIn(user1);
+                                                        return _this2.onLoggedIn(user1);
                                                     }
                                                 })
                                             });
@@ -23199,7 +23197,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 192
+                                            lineNumber: 188
                                         },
                                         __self: this
                                     }),
@@ -23214,11 +23212,11 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
                                                     user: user,
                                                     setUser: function(user1) {
-                                                        return _this3.setUser(user1);
+                                                        return _this2.setUser(user1);
                                                     },
                                                     movies: movies,
                                                     onLoggedOut: function() {
-                                                        return _this3.onLoggedOut();
+                                                        return _this2.onLoggedOut();
                                                     },
                                                     onBackClick: function() {
                                                         return history.goBack();
@@ -23228,7 +23226,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 210
+                                            lineNumber: 206
                                         },
                                         __self: this
                                     }),
@@ -23251,7 +23249,7 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                                         },
                                         __source: {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 223
+                                            lineNumber: 219
                                         },
                                         __self: this
                                     })
@@ -44408,7 +44406,7 @@ function movies() {
     }
 }
 function user() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     var action = arguments.length > 1 ? arguments[1] : undefined;
     switch(action.type){
         case _actions.SET_USER:

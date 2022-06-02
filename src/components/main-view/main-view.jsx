@@ -17,7 +17,7 @@ import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
   constructor() {
-    // super();
+    super();
     // this.state = {
     //   user: null,
     // };
