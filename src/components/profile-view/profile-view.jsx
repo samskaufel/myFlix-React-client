@@ -7,10 +7,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { setUser } from '../../actions/actions';
+import { connect } from 'react-redux';
 
-export class ProfileView extends React.Component {
+class ProfileView extends React.Component {
   constructor() {
     super();
+    console.log("stringtest")
     this.state = {
       Username: null,
       Password: null,
@@ -20,10 +23,10 @@ export class ProfileView extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
-  }
+  // componentDidMount() {
+  //   const accessToken = localStorage.getItem("token");
+  //   this.getUser(accessToken);
+  // }
 
   onLoggedOut() {
     localStorage.removeItem("token");
@@ -34,31 +37,32 @@ export class ProfileView extends React.Component {
     window.open("/", "_self");
   }
 
-  getUser = (token) => {
-    const Username = localStorage.getItem("user");
-    axios
-      .get(`https://myflix-api-project.herokuapp.com/users/${Username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  // getUser = (token) => {
+  //   const Username = localStorage.getItem("user");
+  //   axios
+  //     .get(`https://myflix-api-project.herokuapp.com/users/${Username}`, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     })
+  //     .then((response) => {
+  //       this.setState({
+  //         Username: response.data.Username,
+  //         Password: response.data.Password,
+  //         Email: response.data.Email,
+  //         Birthday: response.data.Birthday,
+  //         FavoriteMovies: response.data.FavoriteMovies,
+  //       });
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
   // Allow user to edit or update profile
+
   editUser = (e) => {
     e.preventDefault();
     const Username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-
+    console.log("edit", this.state)
     axios
       .put(
         `https://myflix-api-project.herokuapp.com/users/${Username}`,
@@ -72,6 +76,7 @@ export class ProfileView extends React.Component {
         }
       )
       .then((response) => {
+        console.log(response)
         this.setState({
           Username: response.data.Username,
           Password: response.data.Password,
@@ -83,7 +88,8 @@ export class ProfileView extends React.Component {
         console.log(data);
         console.log(this.state.Username);
         alert("Profile updated");
-        window.open(`/users/${user}`, "_self");
+        this.props.setUser(response.data);
+        // window.open(`/users/${user}`, "_self");
       })
       .catch(function (error) {
         console.log(error);
@@ -165,7 +171,7 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { user } = this.props;
     const { FavoriteMovies, Username, Email, Birthday } = this.state;
 
     return (
@@ -177,16 +183,16 @@ export class ProfileView extends React.Component {
               <Card.Body>
                 <Card.Text>
                   <span className="label">Username: </span>
-                  <span className="value">{Username}</span>
+                  <span className="value">{user.Username}</span>
                 </Card.Text>
                 <Card.Text>
                   <span className="label">Email: </span>
-                  <span className="value">{Email}</span>
+                  <span className="value">{user.Email}</span>
                 </Card.Text>
                 <Card.Text>
                   <span className="label">Birthday: </span>
                   <span className="value">
-                    {new Date(Birthday).toLocaleDateString()}
+                    {new Date(user.Birthday).toLocaleDateString()}
                   </span>
                 </Card.Text>
               </Card.Body>
@@ -249,7 +255,7 @@ export class ProfileView extends React.Component {
                     <Button
                       variant="warning"
                       type="submit"
-                      onClick={() => this.editUser}
+                     
                     >
                       Update User Info
                     </Button>
@@ -322,3 +328,9 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = (state) => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps, { setUser })(ProfileView);

@@ -5,7 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { NavigationBar } from "../navbar/navbar";
-import { ProfileView } from "../profile-view/profile-view";
+import ProfileView from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import Container from "react-bootstrap/Container";
@@ -67,7 +67,7 @@ class MainView extends React.Component {
   render() {
     let { movies, user } = this.props;
     // let { user } = this.state;
-
+    console.log(user)
     return (
       <Router>
         <NavigationBar user={user} />
@@ -163,7 +163,7 @@ class MainView extends React.Component {
               }}
             />
             <Route
-              path={`/users/${user}`}
+              path={`/users/${user?.Username}`}
               render={({ history }) => {
                 if (!user) return <Redirect to="/" />;
                 return (

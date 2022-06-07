@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import {Link} from 'react-router-dom';
 
 export function NavigationBar({ user }) {
   const onLoggedOut = () => {
@@ -36,7 +37,7 @@ export function NavigationBar({ user }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+            {isAuth()&&user && <Nav.Link as={Link} to={`/users/${user.Username}`}>{user.Username}</Nav.Link>} 
             {isAuth() && (
               <Button
                 variant="outline-primary"
