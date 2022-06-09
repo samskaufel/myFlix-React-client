@@ -37,7 +37,7 @@ export function NavigationBar({ user }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            {isAuth()&&user && <Nav.Link as={Link} to={`/users/${user.Username}`}>{user.Username}</Nav.Link>} 
+            {isAuth()&& user && <Nav.Link as={Link} to={`/users/${user.Username}`}>{user.Username}</Nav.Link>} 
             {isAuth() && (
               <Button
                 variant="outline-primary"

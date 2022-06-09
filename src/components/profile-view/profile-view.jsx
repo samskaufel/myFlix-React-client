@@ -23,11 +23,6 @@ class ProfileView extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   const accessToken = localStorage.getItem("token");
-  //   this.getUser(accessToken);
-  // }
-
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -36,27 +31,6 @@ class ProfileView extends React.Component {
     });
     window.open("/", "_self");
   }
-
-  // getUser = (token) => {
-  //   const Username = localStorage.getItem("user");
-  //   axios
-  //     .get(`https://myflix-api-project.herokuapp.com/users/${Username}`, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     })
-  //     .then((response) => {
-  //       this.setState({
-  //         Username: response.data.Username,
-  //         Password: response.data.Password,
-  //         Email: response.data.Email,
-  //         Birthday: response.data.Birthday,
-  //         FavoriteMovies: response.data.FavoriteMovies,
-  //       });
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-  // Allow user to edit or update profile
 
   editUser = (e) => {
     e.preventDefault();
@@ -89,7 +63,6 @@ class ProfileView extends React.Component {
         console.log(this.state.Username);
         alert("Profile updated");
         this.props.setUser(response.data);
-        // window.open(`/users/${user}`, "_self");
       })
       .catch(function (error) {
         console.log(error);

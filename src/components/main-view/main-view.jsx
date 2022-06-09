@@ -18,9 +18,6 @@ import MoviesList from "../movies-list/movies-list";
 class MainView extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   user: null,
-    // };
   }
 
   componentDidMount() {
@@ -35,9 +32,6 @@ class MainView extends React.Component {
 
   onLoggedIn(authData) {
     console.log(authData);
-    // this.setState({
-    //   user: authData.user.Username,
-    // });
     this.props.setUser(authData.user);
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
@@ -66,8 +60,8 @@ class MainView extends React.Component {
 
   render() {
     let { movies, user } = this.props;
-    // let { user } = this.state;
     console.log(user)
+    
     return (
       <Router>
         <NavigationBar user={user} />
