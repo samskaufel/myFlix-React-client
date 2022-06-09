@@ -172,7 +172,7 @@ class ProfileView extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { FavoriteMovies, Username, Email, Birthday } = this.state;
+    const { FavoriteMovies } = this.state;
 
     return (
       <Container className="profile-view">
@@ -255,7 +255,6 @@ class ProfileView extends React.Component {
                     <Button
                       variant="warning"
                       type="submit"
-                     
                     >
                       Update User Info
                     </Button>
