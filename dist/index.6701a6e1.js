@@ -22998,7 +22998,8 @@ var MainView1 = /*#__PURE__*/ function(_React$Component) {
                 //   user: authData.user.Username,
                 // });
                 this.props.setUser(authData.user);
-                localStorage.setItem("token", authData.token); // localStorage.setItem("user", authData.user.Username);
+                localStorage.setItem("token", authData.token);
+                localStorage.setItem("user", authData.user.Username);
                 this.getMovies(authData.token);
             }
         },
@@ -31175,7 +31176,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Nav":"io07g","react-bootstrap/Container":"2PRIq","react-bootstrap/Navbar":"eYZQl","react-bootstrap/Button":"9CzHT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iUtfg","react-router-dom":"cpyQW"}],"io07g":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Nav":"io07g","react-bootstrap/Container":"2PRIq","react-bootstrap/Navbar":"eYZQl","react-bootstrap/Button":"9CzHT","react-router-dom":"cpyQW","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iUtfg"}],"io07g":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -34701,7 +34702,7 @@ exports["default"] = _default;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-bootstrap/Container":"2PRIq","react-bootstrap/Card":"MoOk8","react-bootstrap/Button":"9CzHT","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","react-bootstrap/Form":"5ykgY","react-router-dom":"cpyQW","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iUtfg","../../actions/actions":"1Ttfj","react-redux":"2L0if"}],"1Ttfj":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-bootstrap/Container":"2PRIq","react-bootstrap/Card":"MoOk8","react-bootstrap/Button":"9CzHT","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","react-bootstrap/Form":"5ykgY","react-router-dom":"cpyQW","../../actions/actions":"1Ttfj","react-redux":"2L0if","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iUtfg"}],"1Ttfj":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true

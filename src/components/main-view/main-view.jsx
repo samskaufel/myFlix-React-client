@@ -40,7 +40,7 @@ class MainView extends React.Component {
     // });
     this.props.setUser(authData.user);
     localStorage.setItem("token", authData.token);
-    // localStorage.setItem("user", authData.user.Username);
+    localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
   }
 
