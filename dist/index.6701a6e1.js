@@ -34216,13 +34216,13 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
             key: "render",
             value: function render() {
                 var _this2 = this;
-                var user = this.props.user;
-                var FavoriteMovies = this.state.FavoriteMovies;
+                var _this$props = this.props, user = _this$props.user, movies = _this$props.movies;
+                var FavoriteMovies = user.FavoriteMovies;
                 return(/*#__PURE__*/ _jsxRuntime.jsxs(_Container.default, {
                     className: "profile-view",
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 232
+                        lineNumber: 234
                     },
                     __self: this,
                     children: [
@@ -34230,7 +34230,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                             className: "mb-2",
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 233
+                                lineNumber: 235
                             },
                             __self: this,
                             children: [
@@ -34238,21 +34238,21 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                     className: "mb-2",
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 234
+                                        lineNumber: 236
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default, {
                                         className: "user-profile",
                                         __source: {
                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                            lineNumber: 235
+                                            lineNumber: 237
                                         },
                                         __self: this,
                                         children: [
                                             /*#__PURE__*/ _jsxRuntime.jsx(_Card.default.Header, {
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 236
+                                                    lineNumber: 238
                                                 },
                                                 __self: this,
                                                 children: "Profile"
@@ -34260,14 +34260,14 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                             /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default.Body, {
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 237
+                                                    lineNumber: 239
                                                 },
                                                 __self: this,
                                                 children: [
                                                     /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default.Text, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 238
+                                                            lineNumber: 240
                                                         },
                                                         __self: this,
                                                         children: [
@@ -34275,7 +34275,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                 className: "label",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 239
+                                                                    lineNumber: 241
                                                                 },
                                                                 __self: this,
                                                                 children: "Username: "
@@ -34284,7 +34284,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                 className: "value",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 240
+                                                                    lineNumber: 242
                                                                 },
                                                                 __self: this,
                                                                 children: user.Username
@@ -34294,7 +34294,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                     /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default.Text, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 242
+                                                            lineNumber: 244
                                                         },
                                                         __self: this,
                                                         children: [
@@ -34302,7 +34302,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                 className: "label",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 243
+                                                                    lineNumber: 245
                                                                 },
                                                                 __self: this,
                                                                 children: "Email: "
@@ -34311,7 +34311,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                 className: "value",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 244
+                                                                    lineNumber: 246
                                                                 },
                                                                 __self: this,
                                                                 children: user.Email
@@ -34321,7 +34321,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                     /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default.Text, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 246
+                                                            lineNumber: 248
                                                         },
                                                         __self: this,
                                                         children: [
@@ -34329,7 +34329,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                 className: "label",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 247
+                                                                    lineNumber: 249
                                                                 },
                                                                 __self: this,
                                                                 children: "Birthday: "
@@ -34338,7 +34338,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                 className: "value",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 248
+                                                                    lineNumber: 250
                                                                 },
                                                                 __self: this,
                                                                 children: new Date(user.Birthday).toLocaleDateString()
@@ -34354,20 +34354,20 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                     className: "mb-2",
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 255
+                                        lineNumber: 257
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default, {
                                         __source: {
                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                            lineNumber: 256
+                                            lineNumber: 258
                                         },
                                         __self: this,
                                         children: [
                                             /*#__PURE__*/ _jsxRuntime.jsx(_Card.default.Header, {
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 257
+                                                    lineNumber: 259
                                                 },
                                                 __self: this,
                                                 children: "Update Profile"
@@ -34375,7 +34375,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_Card.default.Body, {
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 258
+                                                    lineNumber: 260
                                                 },
                                                 __self: this,
                                                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_Form.default, {
@@ -34385,7 +34385,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                     },
                                                     __source: {
                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                        lineNumber: 259
+                                                        lineNumber: 261
                                                     },
                                                     __self: this,
                                                     children: [
@@ -34394,14 +34394,14 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                             className: "reg-form-inputs",
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 262
+                                                                lineNumber: 264
                                                             },
                                                             __self: this,
                                                             children: [
                                                                 /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Label, {
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 263
+                                                                        lineNumber: 265
                                                                     },
                                                                     __self: this,
                                                                     children: "Change Username"
@@ -34416,7 +34416,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     required: true,
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 264
+                                                                        lineNumber: 266
                                                                     },
                                                                     __self: this
                                                                 })
@@ -34425,7 +34425,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 268
+                                                                lineNumber: 270
                                                             },
                                                             __self: this
                                                         }),
@@ -34434,14 +34434,14 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                             className: "reg-form-inputs",
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 269
+                                                                lineNumber: 271
                                                             },
                                                             __self: this,
                                                             children: [
                                                                 /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Label, {
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 270
+                                                                        lineNumber: 272
                                                                     },
                                                                     __self: this,
                                                                     children: "Change Password"
@@ -34456,7 +34456,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     required: true,
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 271
+                                                                        lineNumber: 273
                                                                     },
                                                                     __self: this
                                                                 })
@@ -34465,7 +34465,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 275
+                                                                lineNumber: 277
                                                             },
                                                             __self: this
                                                         }),
@@ -34474,14 +34474,14 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                             className: "reg-form-input",
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 276
+                                                                lineNumber: 278
                                                             },
                                                             __self: this,
                                                             children: [
                                                                 /*#__PURE__*/ _jsxRuntime.jsx(_Form.default.Label, {
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 277
+                                                                        lineNumber: 279
                                                                     },
                                                                     __self: this,
                                                                     children: "Change Email"
@@ -34496,7 +34496,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     required: true,
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 278
+                                                                        lineNumber: 280
                                                                     },
                                                                     __self: this
                                                                 })
@@ -34505,7 +34505,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 282
+                                                                lineNumber: 284
                                                             },
                                                             __self: this
                                                         }),
@@ -34513,7 +34513,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                             className: "button-group",
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 284
+                                                                lineNumber: 286
                                                             },
                                                             __self: this,
                                                             children: [
@@ -34522,7 +34522,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     type: "submit",
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 285
+                                                                        lineNumber: 287
                                                                     },
                                                                     __self: this,
                                                                     children: "Update User Info"
@@ -34535,7 +34535,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     },
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 289
+                                                                        lineNumber: 291
                                                                     },
                                                                     __self: this,
                                                                     children: "Delete User Profile"
@@ -34553,21 +34553,21 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                         /*#__PURE__*/ _jsxRuntime.jsx(_Row.default, {
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 300
+                                lineNumber: 302
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_Container.default, {
                                 className: "user-favorites",
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 301
+                                    lineNumber: 303
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default, {
                                     className: "user-favorites-container",
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 302
+                                        lineNumber: 304
                                     },
                                     __self: this,
                                     children: [
@@ -34575,7 +34575,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                             className: "user-favorites-header",
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                lineNumber: 303
+                                                lineNumber: 305
                                             },
                                             __self: this,
                                             children: "My Favorites"
@@ -34583,7 +34583,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                         /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default.Body, {
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                lineNumber: 306
+                                                lineNumber: 308
                                             },
                                             __self: this,
                                             children: [
@@ -34591,7 +34591,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                     className: "text-center",
                                                     __source: {
                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                        lineNumber: 307
+                                                        lineNumber: 309
                                                     },
                                                     __self: this,
                                                     children: "No Favorite Movies"
@@ -34603,7 +34603,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                         className: "card-holder",
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 312
+                                                            lineNumber: 314
                                                         },
                                                         __self: this,
                                                         children: /*#__PURE__*/ _jsxRuntime.jsxs(_Card.default, {
@@ -34613,7 +34613,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                             className: "favorite-movie",
                                                             __source: {
                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 313
+                                                                lineNumber: 315
                                                             },
                                                             __self: this,
                                                             children: [
@@ -34624,7 +34624,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     crossOrigin: "true",
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 316
+                                                                        lineNumber: 318
                                                                     },
                                                                     __self: this
                                                                 }),
@@ -34632,7 +34632,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                     className: "favorite-movie-body",
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 317
+                                                                        lineNumber: 319
                                                                     },
                                                                     __self: this,
                                                                     children: [
@@ -34640,7 +34640,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                             className: "movie-title",
                                                                             __source: {
                                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                                lineNumber: 318
+                                                                                lineNumber: 320
                                                                             },
                                                                             __self: this,
                                                                             children: movie.Title
@@ -34654,7 +34654,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                                                                             },
                                                                             __source: {
                                                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                                                lineNumber: 321
+                                                                                lineNumber: 323
                                                                             },
                                                                             __self: this,
                                                                             children: "Remove"
@@ -34675,7 +34675,7 @@ var ProfileView1 = /*#__PURE__*/ function(_React$Component) {
                             to: "/",
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 335
+                                lineNumber: 337
                             },
                             __self: this,
                             children: "Home"
